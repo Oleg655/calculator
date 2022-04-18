@@ -6,37 +6,26 @@ import style from "./Buttons.module.scss";
 
 export const Buttons = () => {
   const dispatch = useDispatch();
+  const symbols = useSelector<AppStateType, string[]>(
+    (state) => state.calculator.buttons
+  );
+  const inputValue = useSelector<AppStateType, string>(
+    (state) => state.calculator.inputValue
+  );
 
-  const onClickChangeNumber = (value: number) => {
+  const onClickChangeNumber = (value: string) => {
     dispatch(changeNumber(value));
   };
-  const createDigits = () => {
-    const digits = [];
-    for (let i = 1; i < 10; i++) {
-      digits.push(
-        <button className={style.button} key={i}>
-          {i}
-        </button>
-      );
-    }
-    return digits;
-  };
+ 
 
   return (
     <div className={style.buttonsBlock}>
-      <div className={style.operators}>
-        <button className={style.button}>C</button>
-        <button className={style.button}>√</button>
-        <button className={style.button}>%</button>
-        <button className={style.button}>/</button>
-      </div>
+      
+      {symbols.map((s) => {
+        return <button onClick={()=>onClickChangeNumber(inputValue + s)} className={style.button}>{s}</button>;
+      })}
 
-      <div className={style.digits}>
-        {createDigits()}
-        <button className={style.button}>0</button>
-        <button className={style.button}>,</button>
-        <button className={style.button}>=</button>
-      </div>
+     
     </div>
   );
 };

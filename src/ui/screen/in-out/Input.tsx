@@ -5,7 +5,7 @@ import { AppStateType } from "../../../redux/store";
 import style from "./Input.module.scss";
 
 export const Input = () => {
-  const inputValue = useSelector<AppStateType, number>(
+  const inputValue = useSelector<AppStateType, string>(
     (state) => state.calculator.inputValue
   );
   
