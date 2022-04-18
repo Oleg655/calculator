@@ -1,0 +1,27 @@
+.buttonsBlock {
+    display: flex;
+  width: 458px;
+  height: 464px;
+
+  .button {
+     display: flex;
+     flex-wrap: wrap;
+    appearance: none;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    width: 100px;
+    height: 80px;
+   
+    cursor: pointer;
+
+    font-family: "Geometria";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 88px;
+
+    text-align: center;
+
+  }
+}
