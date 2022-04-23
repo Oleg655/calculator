@@ -27,6 +27,8 @@ export const Buttons = () => {
         return dispatch(percent());
       case "&#8730;":
         return dispatch(sqrt());
+        // case 'x':
+        //   return dispatch(multiply)
       default:
         dispatch(changeNumber(inputValue + value));
     }
@@ -34,7 +36,9 @@ export const Buttons = () => {
 
   return (
     <div className={style.buttonsBlock}>
-      <button onClick={() => onClickChangeNumber("C")} className={style.button}>
+      <button onClick={() => onClickChangeNumber("C")
+      
+    } className={style.button}>
         C
       </button>
       <button
@@ -58,7 +62,7 @@ export const Buttons = () => {
       <button onClick={() => onClickChangeNumber("9")} className={style.button}>
         9
       </button>
-      <button onClick={() => onClickChangeNumber("*")} className={style.button}>
+      <button onClick={() => onClickChangeNumber('*')} className={style.button}>
         &#215;
       </button>
       <button onClick={() => onClickChangeNumber("4")} className={style.button}>

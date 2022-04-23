@@ -1,7 +1,7 @@
 type initialStateType = typeof initialState;
 
 const initialState = {
-  result: '' as string | number,
+  result: "" as string | number,
   numbers: "",
   inputValue: "",
 };
@@ -12,7 +12,6 @@ export const calculatorReducer = (
 ): initialStateType => {
   switch (action.type) {
     case "CHANGE_NUMBER":
-      debugger
       return {
         ...state,
         inputValue: action.symbol,
@@ -20,16 +19,17 @@ export const calculatorReducer = (
     case "MULTIPLY":
       return {
         ...state,
+        
       };
-      case "SQRT":
-        return{
-          ...state,
-          result: Math.sqrt(eval(state.inputValue))
-        }
+    case "SQRT":
+      return {
+        ...state,
+        result: Math.sqrt(eval(state.inputValue)),
+      };
     case "PERCENT":
       return {
         ...state,
-        result: eval(state.inputValue)/100
+        result: eval(state.inputValue) / 100,
       };
     case "RESULT":
       return {
@@ -40,35 +40,41 @@ export const calculatorReducer = (
       return {
         ...state,
         inputValue: "",
+        result: '',
       };
     default:
       return state;
   }
 };
 
-type ActionsType = ReturnType<typeof changeNumber>;
+type ActionsType =
+  | ReturnType<typeof changeNumber>
+  | ReturnType<typeof multiply>
+  | ReturnType<typeof sqrt>
+  | ReturnType<typeof percent>
+  | ReturnType<typeof result>
+  | ReturnType<typeof clear>;
 
 export const changeNumber = (symbol: string) => {
-  debugger
-  return { type: "CHANGE_NUMBER", symbol };
+  return { type: "CHANGE_NUMBER", symbol }as const;
 };
 
 export const multiply = () => {
-  return { type: "MULTIPLY" };
+  return { type: "MULTIPLY" }as const;
 };
 
 export const sqrt = () => {
-  return { type: "SQRT" };
+  return { type: "SQRT" }as const;
 };
 
 export const percent = () => {
-  return { type: "PERCENT" };
+  return { type: "PERCENT" }as const;
 };
 
 export const result = () => {
-  return { type: "RESULT" };
+  return { type: "RESULT" }as const;
 };
 
 export const clear = () => {
-  return { type: "CLEAR" };
+  return { type: "CLEAR" }as const;
 };

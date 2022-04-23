@@ -20,5 +20,12 @@
     line-height: 88px;
 
     text-align: center;
+    &:active{
+      outline: none;
+    }
+    &:focus{
+      outline: none;
+    }
+    
   }
 }
