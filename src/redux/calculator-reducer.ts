@@ -1,8 +1,7 @@
-type initialStateType = typeof initialState;
+export type initialStateType = typeof initialState;
 
 const initialState = {
   result: "" as string | number,
-  numbers: "",
   inputValue: "",
 };
 
@@ -34,6 +33,7 @@ export const calculatorReducer = (
     case "RESULT":
       return {
         ...state,
+        // result: eval(state.inputValue),
         result: eval(state.inputValue),
       };
     case "CLEAR":

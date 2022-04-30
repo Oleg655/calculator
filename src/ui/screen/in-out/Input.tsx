@@ -13,27 +13,22 @@ export const Input = () => {
 
   const onChangeWrapper = (e: ChangeEvent<HTMLInputElement>) => {
     const regex = new RegExp(/^[0-9()+\-*/.]*$/);
+    
     let expression = e.currentTarget.value;
     if (regex.test(expression)) {
       dispatch(changeNumber(expression));
     }
   };
-  const [position, setPosition] = useState(0);
 
   useEffect(() => {
-    const id = setTimeout(() => {
-      if (inputRef.current) {
-        inputRef.current.focus();
-      }
-    }, 400);
-    if (inputRef !== null) {
-      // возвращаем курсор на оригинальную позицию
-      inputRef.current.selectionStart = position;
-      inputRef.current.selectionEnd = position;
-      console.log("position", position);
+    if (inputRef.current) {
+      inputRef.current.focus();
     }
-    return () => clearTimeout(id);
-  });
+    // if (inputValue !== null) {
+    //   inputRef.current.selectionStart = inputValue.length;
+    //   inputRef.current.selectionEnd = inputValue.length;
+    // }
+  }, [inputValue]);
 
   return (
     <input
@@ -43,6 +38,9 @@ export const Input = () => {
         if (e.key === "Enter") {
           dispatch(result());
         }
+      }}
+      onClick={()=>{
+        inputRef.current.selectionStart = inputValue.length;
       }}
       onChange={onChangeWrapper}
       value={inputValue}
