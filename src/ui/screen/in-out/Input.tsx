@@ -24,10 +24,6 @@ export const Input = () => {
     if (inputRef.current) {
       inputRef.current.focus();
     }
-    // if (inputValue !== null) {
-    //   inputRef.current.selectionStart = inputValue.length;
-    //   inputRef.current.selectionEnd = inputValue.length;
-    // }
   }, [inputValue]);
 
   return (

@@ -4,6 +4,9 @@ const initialState = {
   result: "" as string | number,
   inputValue: "",
 };
+function calculate(fn: any) {
+  return new Function("return " + fn)();
+}
 
 export const calculatorReducer = (
   state = initialState,
@@ -15,32 +18,48 @@ export const calculatorReducer = (
         ...state,
         inputValue: action.symbol,
       };
-    case "MULTIPLY":
-      return {
-        ...state,
-        
-      };
+
     case "SQRT":
-      return {
-        ...state,
-        result: Math.sqrt(eval(state.inputValue)),
-      };
+      if (state.result) {
+        return {
+          ...state,
+          result: Math.sqrt(+state.result),
+        };
+      }
+      if (state.inputValue) {
+        return {
+          ...state,
+          result: Math.sqrt(+state.inputValue),
+        };
+      }
+
+      return state;
+
     case "PERCENT":
-      return {
-        ...state,
-        result: eval(state.inputValue) / 100,
-      };
+      if (state.result) {
+        return {
+          ...state,
+          result: calculate(+state.result / 100),
+        };
+      }
+      if (state.inputValue) {
+        return {
+          ...state,
+          result: calculate(+state.inputValue / 100),
+        };
+      }
+
+      return state;
     case "RESULT":
       return {
         ...state,
-        // result: eval(state.inputValue),
-        result: eval(state.inputValue),
+        result: calculate(state.inputValue),
       };
     case "CLEAR":
       return {
         ...state,
         inputValue: "",
-        result: '',
+        result: "",
       };
     default:
       return state;
@@ -56,25 +75,25 @@ type ActionsType =
   | ReturnType<typeof clear>;
 
 export const changeNumber = (symbol: string) => {
-  return { type: "CHANGE_NUMBER", symbol }as const;
+  return { type: "CHANGE_NUMBER", symbol } as const;
 };
 
 export const multiply = () => {
-  return { type: "MULTIPLY" }as const;
+  return { type: "MULTIPLY" } as const;
 };
 
 export const sqrt = () => {
-  return { type: "SQRT" }as const;
+  return { type: "SQRT" } as const;
 };
 
 export const percent = () => {
-  return { type: "PERCENT" }as const;
+  return { type: "PERCENT" } as const;
 };
 
 export const result = () => {
-  return { type: "RESULT" }as const;
+  return { type: "RESULT" } as const;
 };
 
 export const clear = () => {
-  return { type: "CLEAR" }as const;
+  return { type: "CLEAR" } as const;
 };
