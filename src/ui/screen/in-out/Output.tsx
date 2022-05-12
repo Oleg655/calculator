@@ -6,8 +6,8 @@ import style from './Output.module.scss'
 export const Output = () => {
     const result = useSelector<AppStateType, string|number>(state => state.calculator.result)
     return(
-        <span className={style.outputBlock}>
+        <div className={style.outputBlock}>
             {result}
-        </span>
+        </div>
     )
 }

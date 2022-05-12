@@ -1,10 +1,12 @@
 .calculatorBlock {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
+  justify-content: space-between;
   width: 554px;
   min-height: 100vh;
+  padding: 47px;
+  box-sizing: border-box;
 
   background: linear-gradient(155.23deg, #28518e 0%, #3a77d1 100%);
   box-shadow: 0px 82px 158px rgba(0, 0, 0, 0.35),
@@ -12,4 +14,10 @@
     0px 10.2677px 19.7841px rgba(0, 0, 0, 0.175),
     0px 3.71362px 7.1555px rgba(0, 0, 0, 0.121944);
   border-radius: 18px;
+  @media screen and(max-width: 554px) {
+    min-width: 100vw;
+    min-height: 100vh;
+    padding: 0px;
+    border-radius: 0px;
+  }
 }

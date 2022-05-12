@@ -4,8 +4,9 @@ const initialState = {
   result: "" as string | number,
   inputValue: "",
 };
-function calculate(fn: any) {
-  return new Function("return " + fn)();
+function calculate(fn: string | number) {
+  const calcFn = new Function("return " + fn);
+  return calcFn();
 }
 
 export const calculatorReducer = (
@@ -68,7 +69,6 @@ export const calculatorReducer = (
 
 type ActionsType =
   | ReturnType<typeof changeNumber>
-  | ReturnType<typeof multiply>
   | ReturnType<typeof sqrt>
   | ReturnType<typeof percent>
   | ReturnType<typeof result>
@@ -76,10 +76,6 @@ type ActionsType =
 
 export const changeNumber = (symbol: string) => {
   return { type: "CHANGE_NUMBER", symbol } as const;
-};
-
-export const multiply = () => {
-  return { type: "MULTIPLY" } as const;
 };
 
 export const sqrt = () => {

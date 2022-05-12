@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   changeNumber,
   clear,
-  multiply,
   percent,
   result,
   sqrt,
 } from "../../redux/calculator-reducer";
 import { AppStateType } from "../../redux/store";
 import style from "./Buttons.module.scss";
+import { ReactComponent as Square } from "../../assets/sqr.svg";
+import { ReactComponent as Multiply } from "../../assets/multiply.svg";
 
 export const Buttons = () => {
   const dispatch = useDispatch();
@@ -21,17 +22,19 @@ export const Buttons = () => {
   const onClickChangeNumber = (value: string) => {
     switch (value) {
       case "C":
-        return dispatch(clear());
+        dispatch(clear());
+        break;
       case "=":
-        return dispatch(result());
+        dispatch(result());
+        break;
       case "%":
-        return dispatch(percent());
-      case "&#8730;":
-        return dispatch(sqrt());
-        //multiplay
-      case "&#215;":
-        return dispatch(multiply());
-        
+        dispatch(percent());
+
+        break;
+      case "^":
+        dispatch(sqrt());
+        break;
+
       default:
         dispatch(changeNumber(inputValue + value));
     }
@@ -39,14 +42,14 @@ export const Buttons = () => {
 
   return (
     <div className={style.buttonsBlock}>
-      <div onClick={() => onClickChangeNumber("C")} className={style.button}>
+      <button onClick={() => onClickChangeNumber("C")} className={style.button}>
         <div className={style.buttonChild}>C</div>
-      </div>
-      <button
-        onClick={() => onClickChangeNumber("&#8730;")}
-        className={style.button}
-      >
-        <div className={style.buttonChild}>&#8730;</div>
+      </button>
+
+      <button onClick={() => onClickChangeNumber("^")} className={style.button}>
+        <div className={style.buttonChild}>
+          <Square className={style.square} />
+        </div>
       </button>
       <button onClick={() => onClickChangeNumber("%")} className={style.button}>
         <div className={style.buttonChild}>%</div>
@@ -54,6 +57,7 @@ export const Buttons = () => {
       <button onClick={() => onClickChangeNumber("/")} className={style.button}>
         <div className={style.buttonChild}>/</div>
       </button>
+
       <button onClick={() => onClickChangeNumber("7")} className={style.button}>
         <div className={style.buttonChild}>7</div>
       </button>
@@ -63,10 +67,12 @@ export const Buttons = () => {
       <button onClick={() => onClickChangeNumber("9")} className={style.button}>
         <div className={style.buttonChild}>9</div>
       </button>
-      {/*multiply*/}
       <button onClick={() => onClickChangeNumber("*")} className={style.button}>
-        <div className={style.buttonChild}>&#215;</div>
+        <div className={style.buttonChild}>
+          <Multiply className={style.multiply} />
+        </div>
       </button>
+
       <button onClick={() => onClickChangeNumber("4")} className={style.button}>
         <div className={style.buttonChild}>4</div>
       </button>
@@ -79,6 +85,7 @@ export const Buttons = () => {
       <button onClick={() => onClickChangeNumber("-")} className={style.button}>
         <div className={style.buttonChild}>-</div>
       </button>
+
       <button onClick={() => onClickChangeNumber("1")} className={style.button}>
         <div className={style.buttonChild}>1</div>
       </button>
@@ -91,6 +98,7 @@ export const Buttons = () => {
       <button onClick={() => onClickChangeNumber("+")} className={style.button}>
         <div className={style.buttonChild}>+</div>
       </button>
+
       <button
         onClick={() => onClickChangeNumber("00")}
         className={style.button}

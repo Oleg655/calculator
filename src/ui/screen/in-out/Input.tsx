@@ -10,10 +10,13 @@ export const Input = () => {
   const inputValue = useSelector<AppStateType, string>(
     (state) => state.calculator.inputValue
   );
+  const resultt = useSelector<AppStateType, string | number>(
+    (state) => state.calculator.result
+  );
 
   const onChangeWrapper = (e: ChangeEvent<HTMLInputElement>) => {
-    const regex = new RegExp(/^[0-9()+\-*/.]*$/);
-    
+    const regex = new RegExp(/^[0-9()+%\-*/.]*$/);
+
     let expression = e.currentTarget.value;
     if (regex.test(expression)) {
       dispatch(changeNumber(expression));
@@ -35,12 +38,12 @@ export const Input = () => {
           dispatch(result());
         }
       }}
-      onClick={()=>{
+      onClick={() => {
         inputRef.current.selectionStart = inputValue.length;
       }}
       onChange={onChangeWrapper}
       value={inputValue}
-      className={style.inputBlock}
+      className={resultt ? style.inputBlockForResult : style.inputBlock}
     ></input>
   );
 };

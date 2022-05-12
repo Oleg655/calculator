@@ -1,14 +1,17 @@
 .buttonsBlock {
   display: flex;
-  width: 458px;
   flex-wrap: wrap;
-  height: 464px;
-  justify-content: center;
+  flex-grow: 1;
   background: transparent;
 
   .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: none;
-    flex-basis: 92.8px;
+    font-size: 2.25em;
+    flex-basis: 25%;
+
     background: transparent;
     color: white;
     padding: 0;
@@ -18,36 +21,28 @@
 
     font-family: "Geometria";
     font-style: normal;
-    font-weight: 500;
-    font-size: 36px;
-    //line-height: 88px;
 
     text-align: center;
-    &:active {
-      outline: none;
-    }
+
     &:focus {
       outline: none;
     }
-  }
-  .buttonChild {
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
 
-    line-height: 50px;
-    &:active {
+    .buttonChild {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 50px;
       height: 50px;
-      border-radius: 50px;
-      color: white;
+      &:hover {
+        border-radius: 50%;
+        background: rgba(77, 143, 197, 0.815);
+      }
+      &:active {
+        outline: none;
+        background-color: white;
+        color: rgb(48, 48, 145);
+      }
     }
-    &:hover {
-      border-radius: 50px;
-      background: rgba(77, 143, 197, 0.815);
-    }
-    
   }
 }
