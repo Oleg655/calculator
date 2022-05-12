@@ -1,8 +1,8 @@
 .buttonsBlock {
   display: flex;
   flex-wrap: wrap;
-  flex-grow: 0.5;
   background: transparent;
+  flex-grow: 1;
 
   .button {
     display: flex;
@@ -42,14 +42,14 @@
         outline: none;
         background-color: white;
         color: rgb(48, 48, 145);
+        .svg {
+          fill: #2b589a;
+        }
       }
       .svg {
         display: flex;
         align-items: center;
         fill: white;
-        &:active {
-          fill: rgb(48, 48, 145);
-        }
       }
     }
   }

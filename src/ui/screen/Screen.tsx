@@ -14,18 +14,23 @@ export const Screen = () => {
     <>
       {result ? (
         <div className={style.screenBlock}>
-          <Input />
-          <Output />
+          <div className={style.screen}>
+            <Input />
+            <Output />
+          </div>
+
           <div className={style.line}></div>
         </div>
       ) : (
         <div className={style.screenBlock}>
-          <Output />
-          <Input />
+          <div className={style.screen}>
+            <Output />
+            <Input />
+          </div>
+
           <div className={style.line}></div>
         </div>
       )}
-      
     </>
   );
 };

@@ -1,12 +1,18 @@
 .screenBlock {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  flex-grow: 3;
+  justify-content: flex-end;
   color: white;
+  height: 40vh;
+  .screen {
+    display: flex;
+    flex-direction: column;
+  }
   .line {
-    border: 2px solid rgb(41, 104, 221);
+    border: 2px solid #ffffff;
     opacity: 0.35;
+    margin-top: 30px;
+    margin-bottom: 30px;
     border-radius: 20px;
   }
 }
