@@ -1,9 +1,8 @@
 .screenBlock {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  flex-grow: 1;
-  //margin-bottom: 30px;
+  justify-content: space-evenly;
+  flex-grow: 3;
   color: white;
   .line {
     border: 2px solid rgb(41, 104, 221);

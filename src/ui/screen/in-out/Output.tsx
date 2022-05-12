@@ -9,5 +9,6 @@ export const Output = () => {
         <div className={style.outputBlock}>
             {result}
         </div>
+        
     )
 }
