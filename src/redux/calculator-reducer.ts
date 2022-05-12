@@ -52,6 +52,12 @@ export const calculatorReducer = (
 
       return state;
     case "RESULT":
+      if (!isFinite(calculate(state.inputValue))) {
+        return {
+          ...state,
+          result: "Ошибка",
+        };
+      }
       if (!Number.isInteger(calculate(state.inputValue))) {
         return {
           ...state,
