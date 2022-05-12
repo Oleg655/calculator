@@ -21,6 +21,12 @@ export const calculatorReducer = (
       };
 
     case "SQRT":
+      if (!Number.isInteger(Math.sqrt(+state.inputValue))) {
+        return {
+          ...state,
+          result: Math.sqrt(+state.inputValue).toFixed(2),
+        };
+      }
       if (state.result) {
         return {
           ...state,
@@ -38,12 +44,14 @@ export const calculatorReducer = (
 
     case "PERCENT":
       if (state.result) {
+        debugger;
         return {
           ...state,
           result: calculate(+state.result / 100),
         };
       }
       if (state.inputValue) {
+        debugger;
         return {
           ...state,
           result: calculate(+state.inputValue / 100),
