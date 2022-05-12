@@ -52,10 +52,17 @@ export const calculatorReducer = (
 
       return state;
     case "RESULT":
-      return {
-        ...state,
-        result: calculate(state.inputValue),
-      };
+      if (!Number.isInteger(calculate(state.inputValue))) {
+        return {
+          ...state,
+          result: calculate(state.inputValue).toFixed(2),
+        };
+      } else {
+        return {
+          ...state,
+          result: calculate(state.inputValue),
+        };
+      }
     case "CLEAR":
       return {
         ...state,
