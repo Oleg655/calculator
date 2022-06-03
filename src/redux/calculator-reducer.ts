@@ -44,14 +44,12 @@ export const calculatorReducer = (
 
     case "PERCENT":
       if (state.result) {
-        debugger;
         return {
           ...state,
           result: calculate(+state.result / 100),
         };
       }
       if (state.inputValue) {
-        debugger;
         return {
           ...state,
           result: calculate(+state.inputValue / 100),
